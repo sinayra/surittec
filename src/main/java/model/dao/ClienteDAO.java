@@ -1,4 +1,4 @@
-package dao;
+package model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import entity.Cliente;
+import model.entity.Cliente;
 
 public class ClienteDAO {
 

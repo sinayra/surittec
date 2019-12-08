@@ -8,7 +8,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import entity.Cliente;
+import model.dao.ClienteDAO;
+import model.entity.Cliente;
 
 public class ClienteDAOTest {
 
