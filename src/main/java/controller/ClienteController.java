@@ -22,15 +22,15 @@ public class ClienteController {
 	
 
 	@GetMapping("/")
-	public String ClienteList(Model map) throws Exception {
+	public String ClienteList(Model map) {
 		dao = ClienteDAO.getInstance();
-		List<Cliente> clientes;
+		List<Cliente> clientes = null;
 		
 		try {
 			clientes = dao.read();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			throw new Exception(e);
+			
 		}
 		
 		map.addAttribute("clientes", clientes);
@@ -39,14 +39,14 @@ public class ClienteController {
 	}
 	
 	@PostMapping(value = "/addcliente", consumes = "application/json")
-	public ResponseEntity<String> AddCliente(@RequestBody Cliente cliente) throws Exception {
+	public ResponseEntity<String> AddCliente(@RequestBody Cliente cliente){
 		dao = ClienteDAO.getInstance();
 		
 		try {
 			dao.create(cliente);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			throw new Exception(e);
+			return new ResponseEntity<String>("cliente nao adicionado", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 				
 		return new ResponseEntity<String>("cliente adicionado", HttpStatus.OK);
