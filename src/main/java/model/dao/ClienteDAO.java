@@ -12,13 +12,11 @@ import model.entity.Cliente;
 public class ClienteDAO {
 
 	private static ClienteDAO instance;
+	private SessionFactory sessionFactory;
 	private Session session;
 
 	private ClienteDAO() {
-		SessionFactory sessionFactory;
-
 		sessionFactory = new Configuration().configure().buildSessionFactory();
-		session = sessionFactory.openSession();
 	}
 
 	public static ClienteDAO getInstance() {
@@ -30,11 +28,15 @@ public class ClienteDAO {
 	}
 
 	public void create(Cliente cliente) throws Exception {
+
+		session = sessionFactory.openSession();
 		session.beginTransaction();
 
 		try {
 			session.save(cliente);
 		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
 			throw new Exception(e);
 		} finally {
 			session.close();
@@ -43,17 +45,20 @@ public class ClienteDAO {
 
 	public List<Cliente> read() throws Exception {
 		List<Cliente> list = new ArrayList<Cliente>();
-		
+
+		session = sessionFactory.openSession();
 		session.beginTransaction();
 
 		try {
 			list = session.createQuery("SELECT c FROM Cliente c", Cliente.class).getResultList();
 		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
 			throw new Exception(e);
 		} finally {
 			session.close();
 		}
-		
+
 		return list;
 	}
 

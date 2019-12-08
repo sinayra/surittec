@@ -48,6 +48,7 @@ public class ClienteDAOTest {
 			fail(e.getMessage());
 		}
 	}
+	
 
 	@Ignore
 	@Test
