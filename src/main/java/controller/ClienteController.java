@@ -66,4 +66,18 @@ public class ClienteController {
 		return new ResponseEntity<String>("cliente removido", HttpStatus.OK);
 	}
 	
+	@PostMapping(value = "/updatecliente", consumes = "application/json")
+	public ResponseEntity<String> UpdateCliente(@RequestBody Cliente cliente){
+		dao = ClienteDAO.getInstance();
+		
+		try {
+			dao.update(cliente);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new ResponseEntity<String>("cliente nao atualizado", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+				
+		return new ResponseEntity<String>("cliente atualizado", HttpStatus.OK);
+	}
+	
 }
