@@ -4,15 +4,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ClienteList from './components/Cliente/clienteList.js'
 import Menu from './components/Menu/menu.js'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div>
-      <Menu atual={0} />
-      <div className="container-fluid">
-        <ClienteList/>
+
+    <BrowserRouter>
+      <div>
+        <Menu/>
       </div>
-    </div>
+      <div className="container-fluid">
+        <Route path='/' exact component={ClienteList} />
+        <Route path='/add' component={ClienteList} />
+      </div>
+    </BrowserRouter>
+    
+
   );
 }
 
