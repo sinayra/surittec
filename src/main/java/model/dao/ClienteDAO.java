@@ -86,7 +86,24 @@ public class ClienteDAO {
 		}
 	}
 
-	public void delete(Cliente cliente) {
-		// TO DO
+	public void delete(Cliente cliente) throws Exception {
+		Cliente c = new Cliente();
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		try {
+			c = session.get(Cliente.class, cliente.getId());
+			if(c == null) {
+				 throw new NullPointerException("Session did not found 'cliente' by ID " + cliente.getId());
+			}
+			session.delete(c);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+			throw new Exception(e);
+		} finally {
+			session.close();
+		}
 	}
 }
