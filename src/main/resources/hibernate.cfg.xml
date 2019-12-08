@@ -16,6 +16,6 @@
   <property name="hbm2ddl.auto">update</property>
   
   <!-- Mapping -->
-  <mapping class="entity.Cliente"/>
+  <mapping class="model.entity.Cliente"/>
  </session-factory>
 </hibernate-configuration>
