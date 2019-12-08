@@ -52,4 +52,18 @@ public class ClienteController {
 		return new ResponseEntity<String>("cliente adicionado", HttpStatus.OK);
 	}
 	
+	@PostMapping(value = "/deletecliente", consumes = "application/json")
+	public ResponseEntity<String> DeleteCliente(@RequestBody Cliente cliente){
+		dao = ClienteDAO.getInstance();
+		
+		try {
+			dao.delete(cliente);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new ResponseEntity<String>("cliente nao removido", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+				
+		return new ResponseEntity<String>("cliente removido", HttpStatus.OK);
+	}
+	
 }
