@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cliente from './cliente'
-import axios from '../../commom/axios-local';
+import axios from 'axios';
 
 class ClienteList extends Component {
     state = {
@@ -10,7 +10,6 @@ class ClienteList extends Component {
     componentDidMount() {
 
         axios.get('http://localhost:8080/surittec/cliente/').then(res => {
-            console.log(res.data.clientes);
             this.setState({ clientes: res.data.clientes });
         }).catch(error => {
             if (error.response) {
