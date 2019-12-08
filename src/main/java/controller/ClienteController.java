@@ -17,7 +17,7 @@ public class ClienteController {
 	
 
 	@RequestMapping("/")
-	public String listCliente(Model map) throws Exception {
+	public String ClienteList(Model map) throws Exception {
 		dao = ClienteDAO.getInstance();
 		List<Cliente> clientes;
 		
