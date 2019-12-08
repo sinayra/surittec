@@ -20,10 +20,9 @@ public class ClienteDAOTest {
 		dao = ClienteDAO.getInstance();
 	}
 	
-	@Ignore
 	@Test
 	public void testCreate() {
-		Cliente cliente = new Cliente("Fulano", "123456789");
+		Cliente cliente = new Cliente("Fulano", "12345678909");
 
 		try {
 			dao.create(cliente);
@@ -34,11 +33,12 @@ public class ClienteDAOTest {
 			fail(e.getMessage());
 		}
 	}
-
+	
+	@Ignore
 	@Test
 	public void testRead() {
 		List<Cliente> list;
-		Cliente cliente = new Cliente("Fulano", "123456789");
+		Cliente cliente = new Cliente("Fulano", "12345678909");
 		cliente.setId(1);
 		
 		try {
@@ -50,10 +50,19 @@ public class ClienteDAOTest {
 	}
 	
 
-	@Ignore
+	
 	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
+		Cliente cliente = new Cliente("Ciclano", "12345678909");
+		cliente.setId(1);
+
+		try {
+			dao.update(cliente);
+			assert (true);
+			
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
 	}
 
 	@Ignore

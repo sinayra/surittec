@@ -33,7 +33,8 @@ public class ClienteDAO {
 		session.beginTransaction();
 
 		try {
-			session.save(cliente);
+			session.persist(cliente);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -62,8 +63,27 @@ public class ClienteDAO {
 		return list;
 	}
 
-	public void update(Cliente cliente) {
-		// TO DO
+	public void update(Cliente cliente) throws Exception {
+		Cliente velho = new Cliente();
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		try {
+			velho = session.get(Cliente.class, cliente.getId());
+			if(velho == null) {
+				 throw new NullPointerException("Session did not found 'cliente' by ID " + cliente.getId());
+			}
+			velho.setCpf(cliente.getCpf());
+			velho.setNome(cliente.getNome());
+			session.merge(velho);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+			throw new Exception(e);
+		} finally {
+			session.close();
+		}
 	}
 
 	public void delete(Cliente cliente) {
