@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -38,8 +41,20 @@ public class ClienteDAO {
 		}
 	}
 
-	public void read(Cliente cliente) {
-		// TO DO
+	public List<Cliente> read() throws Exception {
+		List<Cliente> list = new ArrayList<Cliente>();
+		
+		session.beginTransaction();
+
+		try {
+			list = session.createQuery("SELECT c FROM Cliente c", Cliente.class).getResultList();
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			session.close();
+		}
+		
+		return list;
 	}
 
 	public void update(Cliente cliente) {
