@@ -6,7 +6,7 @@ const cliente = (props) => {
     return (
         <div>
             <span>{cliente.nome}</span>
-            <span>{cliente.nome}</span>
+            <span>{cliente.cpf}</span>
         </div>
     );
 }
