@@ -32,11 +32,11 @@ class ClienteList extends Component {
             return (
                 <Cliente key={c.id} cliente={c} />
             );
-        }
-        );
+        });
 
         return (
             <div>
+                <h1>Lista de clientes</h1>
                 {clientesElems}
             </div>
         );
