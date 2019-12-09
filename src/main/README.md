@@ -5,6 +5,7 @@
 
 ### Entidade
 Utilizou-se as anotações do Hibernate para criar as entidades e gerar as tabelas do banco de dados, localizadas no pacote __java/model/entity__. 
+
 ![Diagrama das tabelas](https://raw.githubusercontent.com/sinayra/surittec/master/images/tables.PNG)
 
 ### Acesso ao objeto de dados
