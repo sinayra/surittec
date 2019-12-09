@@ -16,8 +16,6 @@ class ClienteList extends Component {
     handleSubmit = (event) =>{
         event.preventDefault();
 
-        console.log(this.state);
-
         axios.post('http://localhost:8080/surittec/cliente/addcliente/', this.state).then(res => {
             this.setState({ nome: "", cpf: "" });
 
