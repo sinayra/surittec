@@ -12,4 +12,4 @@ Seguiu-se o padrão MVC para a arquitetura do projeto, separando em pacotes Mode
 ## Frontend
 Utilizou-se Javascript ES6, React 16 e Axios. Para as folhas de estilo, utilizou-se o Bootstrap 4. Configurou-se a IDE Visual Studio Code, criando um projeto react com **create-react-app** e foi utilizada, como ferramenta auxiliar, o console do Firefox.
 
-Para maiores detalhes da implementação, [clique aqui](https://github.com/sinayra/surittec/tree/master/app/src).
+Para maiores detalhes da implementação, [clique aqui](https://github.com/sinayra/surittec/tree/master/app).
