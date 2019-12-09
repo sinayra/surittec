@@ -52,6 +52,7 @@ public class ClienteDAO {
 
 		try {
 			list = session.createQuery("SELECT c FROM Cliente c", Cliente.class).getResultList();
+			list.forEach(elem -> elem.setTelefones(null));
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();

@@ -23,7 +23,7 @@ public class ClienteDAOTest {
 	
 	@Test
 	public void testCreate() {
-		Cliente cliente = new Cliente("Beltrano", "12345678909");
+		Cliente cliente = new Cliente("Fulano", "12345678909");
 
 		try {
 			dao.create(cliente);
@@ -35,12 +35,11 @@ public class ClienteDAOTest {
 		}
 	}
 	
-	@Ignore
 	@Test
 	public void testRead() {
 		List<Cliente> list;
 		Cliente cliente = new Cliente("Fulano", "12345678909");
-		cliente.setId(1);
+		cliente.setId(12);
 		
 		try {
 			list = dao.read();
@@ -66,7 +65,7 @@ public class ClienteDAOTest {
 		}
 	}
 
-	
+	@Ignore
 	@Test
 	public void testDelete() {
 		Cliente cliente = new Cliente();
