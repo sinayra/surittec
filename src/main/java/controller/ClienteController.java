@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,7 +53,7 @@ public class ClienteController {
 		return new ResponseEntity<String>("cliente adicionado", HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/deletecliente", consumes = "application/json")
+	@DeleteMapping(value = "/deletecliente", consumes = "application/json")
 	public ResponseEntity<String> DeleteCliente(@RequestBody Cliente cliente){
 		dao = ClienteDAO.getInstance();
 		

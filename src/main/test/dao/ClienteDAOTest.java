@@ -70,7 +70,7 @@ public class ClienteDAOTest {
 	@Test
 	public void testDelete() {
 		Cliente cliente = new Cliente();
-		cliente.setId(2);
+		cliente.setId(6);
 
 		try {
 			dao.delete(cliente);

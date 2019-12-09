@@ -8,7 +8,10 @@ class ClienteList extends Component {
     }
 
     componentDidMount() {
+        this.getCliente();
+    }
 
+    getCliente(){
         axios.get('http://localhost:8080/surittec/cliente/').then(res => {
             this.setState({ clientes: res.data.clientes });
         }).catch(error => {
@@ -24,20 +27,30 @@ class ClienteList extends Component {
             }
             console.log(error);
         });
-        
+    }
+
+    onClienteDelete(){
+        this.getCliente();
     }
 
     render() {
         let clientesElems = this.state.clientes.map(c => {
             return (
-                <Cliente key={c.id} cliente={c} />
+                <Cliente key={c.id} cliente={c} onDelete={() => this.onClienteDelete()} />
             );
         });
 
         return (
             <div>
                 <h1>Lista de clientes</h1>
-                {clientesElems}
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm border border-dark"><b>Nome</b></div>
+                        <div className="col-sm border border-dark"><b>CPF</b></div>
+                        <div className="col-sm"></div>
+                    </div>
+                    {clientesElems}
+                </div>
             </div>
         );
     }
