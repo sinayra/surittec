@@ -17,5 +17,6 @@
   
   <!-- Mapping -->
   <mapping class="model.entity.Cliente"/>
+  <mapping class="model.entity.Telefone"/>
  </session-factory>
 </hibernate-configuration>

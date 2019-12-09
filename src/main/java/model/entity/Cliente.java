@@ -1,10 +1,14 @@
 package model.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +24,9 @@ public class Cliente {
 
 	@Column(name = "cpf", length = 11)
 	private String cpf;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
+	List<Telefone> telefones;
 
 	public Cliente() {
 
@@ -52,6 +59,14 @@ public class Cliente {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
 	}
 
 	@Override
