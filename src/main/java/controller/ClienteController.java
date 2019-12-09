@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -67,7 +68,7 @@ public class ClienteController {
 		return new ResponseEntity<String>("cliente removido", HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/updatecliente", consumes = "application/json")
+	@PutMapping(value = "/updatecliente", consumes = "application/json")
 	public ResponseEntity<String> UpdateCliente(@RequestBody Cliente cliente){
 		dao = ClienteDAO.getInstance();
 		

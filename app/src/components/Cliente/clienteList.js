@@ -29,14 +29,14 @@ class ClienteList extends Component {
         });
     }
 
-    onClienteDelete(){
+    onClienteRefresh(){
         this.getCliente();
     }
 
     render() {
         let clientesElems = this.state.clientes.map(c => {
             return (
-                <Cliente key={c.id} cliente={c} onDelete={() => this.onClienteDelete()} />
+                <Cliente key={c.id} cliente={c} onUpdate={() => this.onClienteRefresh()} />
             );
         });
 
@@ -47,6 +47,7 @@ class ClienteList extends Component {
                     <div className="row">
                         <div className="col-sm border border-dark"><b>Nome</b></div>
                         <div className="col-sm border border-dark"><b>CPF</b></div>
+                        <div className="col-sm"></div>
                         <div className="col-sm"></div>
                     </div>
                     {clientesElems}
